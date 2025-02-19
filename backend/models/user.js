@@ -59,7 +59,7 @@ userSchema.methods.isPasswordMatch = async function (password) {
 };
 
 userSchema.methods.AccessToken = async function () {
-  jwt.sign(
+  return jwt.sign(
     {
       _id: this._id,
       email: this.email,
@@ -73,7 +73,7 @@ userSchema.methods.AccessToken = async function () {
 };
 
 userSchema.methods.RefreshToken = async function () {
-  jwt.sign(
+  return jwt.sign(
     {
       _id: this._id,
       email: this.email,

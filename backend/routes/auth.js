@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const authcontroller = require("../controller/auth");
 const { upload } = require("../middlewares/multerStorage");
+const { jwtVerify } = require("../middlewares/authmiddleware");
 
 router.post(
   "/register",
@@ -11,5 +12,11 @@ router.post(
   ]),
   authcontroller.register
 );
+router.post(
+  "/login",
 
+  authcontroller.LoginController
+);
+
+router.post("/logout", jwtVerify, authcontroller.logoutHandeler);
 module.exports = router;
